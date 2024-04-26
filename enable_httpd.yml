@@ -1,0 +1,13 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: start and enable httpd (CentOS)
+      tags: 
+        - apache
+        - centos
+        - httpd
+      service:
+        name: httpd
+        state: started
+      when: ansible_distribution == "CentOS"
+

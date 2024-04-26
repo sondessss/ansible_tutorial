@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+          - name: change line -n file 
+            tags: apache,ubuntu
+            lineinfile: 
+              path: /etc/apache2/apache2.conf
+              regexp: '^ServerAdmin'
+              line: ServerAdmin somebody@somewhere.net
