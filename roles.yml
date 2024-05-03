@@ -1,0 +1,17 @@
+---
+- name: Example Playbook with Roles
+  hosts: all
+  become: true
+  tasks:
+    - name: update repository index (CentOS)
+      tags: always
+      dnf:
+        update_cache: yes
+      changed_when: false
+      when: ansible_distribution == "CentOS"
+
+  roles:
+    - db_servers
+    - web_servers
+    - workstations
+
